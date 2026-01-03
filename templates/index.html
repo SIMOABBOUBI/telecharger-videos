@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>FB Video Downloader</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        input { width: 300px; padding: 10px; }
+        button { padding: 10px 20px; cursor: pointer; background: #1877f2; color: white; border: none; }
+        .result { margin-top: 30px; }
+        .download-btn { background: green; text-decoration: none; padding: 10px; color: white; display: inline-block; }
+    </style>
+</head>
+<body>
+<h1>Télécharger une vidéo Facebook</h1>
+<form method="POST">
+    <input type="text" name="url" placeholder="Collez le lien du Reel ici..." required>
+    <button type="submit">Analyser</button>
+</form>
+
+{% if video_url %}
+<div class="result">
+    <p>✅ Vidéo trouvée !</p>
+    <a href="{{ video_url }}" target="_blank" class="download-btn">Cliquez ici pour télécharger / ouvrir</a>
+    <p><small>(Faites clic-droit > Enregistrer sous si la vidéo s'ouvre simplement)</small></p>
+</div>
+{% endif %}
+
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+</body>
+</html>
